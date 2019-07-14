@@ -28,7 +28,7 @@ class Seq2seq(object):
 		attn_weights = tf.matmul(encoder_outputs, tf.expand_dims(hidden, 2))
 		# attn_weights: B * S * 1
 		context = tf.squeeze(tf.matmul(tf.transpose(encoder_outputs, [0,2,1]), attn_weights))
-		# context: B * D
+		# context: B * S
 		return context
 				
 	def __init__(self, config, w2i_target, useTeacherForcing=True, useAttention=True, useBeamSearch=1):
